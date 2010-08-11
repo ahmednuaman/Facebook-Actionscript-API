@@ -77,7 +77,7 @@ package com.facebook.utils {
 											ExtendedPermissionValues.RSVP_EVENT,
 											ExtendedPermissionValues.SMS,
 											ExtendedPermissionValues.SHARE_ITEM,
-											ExtendedPermissionValues.CREATE_LISTING,
+											//ExtendedPermissionValues.CREATE_LISTING,
 											ExtendedPermissionValues.PUBLISH_STREAM,
 											ExtendedPermissionValues.READ_STREAM ];
 		

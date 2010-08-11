@@ -52,7 +52,7 @@ package com.facebook.data.auth {
 		public static const RSVP_EVENT:String = 'rsvp_event';
 		public static const SMS:String = 'sms';
 		public static const SHARE_ITEM:String = 'share_item';
-		public static const CREATE_LISTING:String = 'create_listing';
+		//public static const CREATE_LISTING:String = 'create_listing';
 		
 		/**
 		 *  Lets your application post content, comments, and likes

@@ -40,6 +40,7 @@ package com.facebook.views {
 	import flash.html.HTMLLoader;
 	import flash.net.URLRequest;
 	import flash.net.URLVariables;
+	import flash.system.Capabilities;
 	
 	public class BaseWindow extends NativeWindow {
 		
@@ -67,6 +68,9 @@ package com.facebook.views {
 			stage.align = StageAlign.TOP_LEFT;
 			width = DEFAULT_WIDTH;
 			height = DEFAULT_HEIGHT;
+			
+			x 					= ( Capabilities.screenResolutionX - width ) / 2;
+			y 					= ( Capabilities.screenResolutionY - height ) / 2;
 			
 			//html loader
 			_html = new HTMLLoader();

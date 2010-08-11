@@ -72,8 +72,9 @@ package com.facebook.views {
 			distractor.visible = false; //also removes the ENTER_FRAME listener on the distractor
 			
 			if (!closed){
-				width = html.width = html.contentWidth; 
-				height = html.height = html.contentHeight;
+				width = html.width = 640; 
+				height = 480;
+				html.height = height - 15;
 				distractor.x = width - distractor.width >> 1;
 				distractor.y = height - distractor.height >> 1;
 			}	

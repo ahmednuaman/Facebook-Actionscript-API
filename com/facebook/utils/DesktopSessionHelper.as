@@ -87,6 +87,7 @@ package com.facebook.utils {
 		protected var sessionSO:SharedObject;
 		protected var parentWindow:NativeWindow;
 		
+		protected var grantedPermissions:Array; //list of permissions granted
 		protected var permissions:Object; //hash of permission strings and if they granted
 		protected var queuedGrantPermissions:Array; //list of permissions to grant
 		protected var queuedRevokePermissions:Array; //list of permissions to revoke
@@ -94,6 +95,7 @@ package com.facebook.utils {
 		
 		public function DesktopSessionHelper(api_key:String='', parent:NativeWindow=null){
 			super();
+			grantedPermissions = allPermissions;
 			permissions = {};
 			queuedGrantPermissions = [];
 			queuedRevokePermissions = [];
@@ -245,7 +247,7 @@ package com.facebook.utils {
 		    call.addEventListener(JSONEvent.FAILURE, onGetPermissionsFailure, false, 0, true);
 		    call.addEventListener(IOErrorEvent.IO_ERROR, onGetPermissionsIOError, false, 0, true);
 		    call.addEventListener(SecurityErrorEvent.SECURITY_ERROR, onGetPermissionsSecurityError, false, 0, true);
-		    call.call( "fql.query", {query:"select "+allPermissions.join(", ")+" from permissions where uid = "+sessionData.uid} );
+		    call.call( "fql.query", {query:"select "+grantedPermissions.join(", ")+" from permissions where uid = "+sessionData.uid} );
 		}
 		
 		protected function onGetPermissionsSuccess(event:JSONEvent):void {
@@ -306,6 +308,7 @@ package com.facebook.utils {
 				permissionWin = new PermissionWindow();
 				permissionWin.addEventListener(Event.CLOSE, onPermissionWinClose, false, 0, true);
 				permissionWin.askPermissions(queuedGrantPermissions, apiKey);
+				grantedPermissions = queuedGrantPermissions;
 				queuedGrantPermissions = [];
 				dispatchEvent(new FacebookEvent(FacebookEvent.PERMISSIONS_WINDOW_SHOW));
 			} else if(url.indexOf("result=not_logged_in") > -1){ //not logged in

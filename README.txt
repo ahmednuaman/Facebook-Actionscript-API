@@ -1,0 +1,1 @@
+So, we have the Facebook Actionscript API up at: http://code.google.com/p/facebook-actionscript-api/ but it's neglected, no-one seems to give it love anymore! But, I am here to rescue it, oh yes. Please fork, update, etc... Let's make this one good :)
